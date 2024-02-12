@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/style2.css">
+    <link rel="stylesheet" href="../../static/orders.css">
+</head>
+
+<body style="border-width:4px; border-style:double; border-color:#AA6C39; padding: 1em; height: 650px;">
+
+<div class="one">
+    <div class="content">
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="left">
+                <div class="icon icon-fill" align="center" onclick="window.location.href='assets'"><i class="fa fa-arrow-left"></i></div>
+                <div class="icon icon-enter" align="center" onclick="window.location.href='mainmanager'"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div>
+    <table>
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Capacity</th>
+            <th>Price</th>
+            <th>Description</th>
+
+        </tr>
+        {% for row in items %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td><form id = 'delete' action ="" method = "post">
+                    <input type="hidden"  name="identifier" value="{{row[0]}}">
+                    <input name = "DELETE" type="submit" class="btn btn-primary" value="DELETE">
+                </form></td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <form id = 'items' action ="" method = "post">
+                <td><input type="text" name="itemid" placeholder="Enter Item ID" class="textbox" id="itemid" required></td>
+                <td><input type="text" name="itemname" placeholder="Enter Name" class="textbox" id="itemname" required></td>
+                <td><input type="text" name="capacity" placeholder="Enter Capacity" class="textbox" id= "capacity" required></td>
+                <td><input type="text" name="price" placeholder="Enter Price" class="textbox" id= "price" required></td>
+                <td><input type="text" name="description" placeholder="Enter Description" class="textbox" id= "description" required></td>
+                <td>  <input type="submit" class="btn btn-primary" value="Enter Item"></td>
+
+            </form>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

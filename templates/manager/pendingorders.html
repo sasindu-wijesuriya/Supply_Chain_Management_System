@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/style2.css">
+
+    <title>Pending Orders</title>
+    <link rel="stylesheet" href="/static/orders.css">
+</head>
+
+<body style="border-width:4px; border-style:double; border-color:#AA6C39; padding: 1em; height: 650px;">
+
+<div class="one">
+    <div class="content">
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="left">
+                <div class="icon icon-enter" align="center" onclick="window.location.href='storemanager'"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div>
+    <table>
+        <caption><h3>Pending Orders</h3></caption>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>No of Items</th>
+            <th>Order Date</th>
+            <th>Order Time</th>
+            <th>Expected Delivery Date</th>
+            <th>Total Price</th>
+            <th>Total Capacity</th>
+            <th>Route ID</th>
+            <th>Delivery State</th>
+            <th>Address No</th>
+            <th>Address Line 01</th>
+            <th>Address Line 02</th>
+            <th>Assign Truck Session</th>
+
+
+        </tr>
+        {% for row in pending_orders %}
+            <tr>
+                <form action ="" method = "post">
+                    <input type="hidden" id="orderid" name="orderid" placeholder={{row[0]}} value="{{row[0]}}">
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td>{{row[5]}}</td>
+                    <td>{{row[6]}}</td>
+                    <td>{{row[8]}}</td>
+                    <td>{{row[9]}}</td>
+                    <td>{{row[10]}}</td>
+                    <td>{{row[11]}}</td>
+                    <td>{{row[12]}}</td>
+                    <td>{{row[13]}}</td>
+                    {% if row[10] == 'InTrain' %}
+                        <td>
+                            <select list="trucksession" name = 'trucksessionid' placeholder="Select Truck Session"  style="width: 100px;" class="text" id = "trk" required>
+                                <datalist id = 'trucksession'>
+                                    <option disabled selected value style="display:none"> -- select an option -- </option>
+                                    {% for item in availabletruck %}
+                                        <option value = '{{ item[0] }}'>{{ item[0] }}</option>
+                                    {% endfor %}
+                                </datalist>
+                            </select>
+                        </td>
+                        <td><input type="submit" class="btn btn-primary" value="Assign"></td>
+                    {% elif row[10] == 'new' %}
+                        <td>Train Not Assigned</td>
+                        <td><input type="submit" class="btn btn-primary" value="Assign" disabled></td>
+                    {% else %}
+                        <td> InTruck</td>
+                        <td><input type="submit" class="btn btn-primary" value="Assign" disabled></td>
+                    {% endif %}
+
+                </form>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>

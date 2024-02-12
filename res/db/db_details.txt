@@ -1,0 +1,4 @@
+localhost
+root
+sasindu1234
+test1

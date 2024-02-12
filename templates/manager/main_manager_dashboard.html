@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <title>Shopee Admin Page</title>
+    <link rel="stylesheet" href="../../static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body style="background-color:#c1f7f2">
+
+<style>
+    a {text-decoration:none;}
+</style>
+
+<div class="one">
+    <div class="two">
+        <h1>SHOPEE STORE</h1>
+        <ul>
+            <li><a href="{{url_for('orders')}}">Orders</a></li>
+            <li><a href="{{url_for('MainManagerDashBoard')}}">DashBoard<br><small>(Main-manager Reports)</small></a></li>
+            <li><a href="{{url_for('trainsched')}}">Schedule Train</a></li>
+            <li><a href="{{url_for('assets')}}">Assets</a></li>
+
+            <li><a href="{{url_for('logout')}}">Log out</a></li>
+        </ul>
+    </div>
+    <div class="content" align="center">
+        <div class="topbar">
+
+            <div class="contentbar">
+                <h2>Main Manager Dashboard</h2>
+            </div>
+        </div>
+
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="right">
+                <div class="icon icon-fill" align="center" onclick="window.location.href='home'"><i class="fa fa-home"></i></div>
+                <div class="icon icon-expand" align="center" onclick="window.location.href='mainmanager'"><i class="fa fa-user"></i></div>
+                <div class="icon icon-enter" align="center" onclick="window.location.href='logout'"><i class="fa fa-sign-out"></i></div>
+                {#                        <div class="icon icon-fill" align="center"><i class="fa fa-home" ></i></div>#}
+                {#                        <div class="icon icon-enter" align="center"><i class="fa fa-user"></i></div>#}
+                {#                        <div class="icon icon-expand" align="center"><i class="fa fa-bars"></i></div>#}
+                {#                        <div class="icon icon-collapse" align="center"><i class="fa fa-sign-out"></i></div>#}
+                {#                        <div class="icon icon-rotate" align="center"><i class="fa fa-phone"></i></div>#}
+            </div>
+        </div>
+
+        <div>
+            <button class="glow-on-hover" type="button" style="margin-top: 70px" onclick="window.location.href='quarterlyreport'">Quarterly Report for the year</button><br>
+            <button class="glow-on-hover" type="button" style="margin-top: 70px" onclick="window.location.href='customerreport'">Customer Report</button><br>
+            <button class="glow-on-hover" type="button" style="margin-top: 70px" onclick="window.location.href='itemswithmostorders'">Items with most orders</button><br>
+        </div>
+    </div>
+</div>
+</body>
+</html>

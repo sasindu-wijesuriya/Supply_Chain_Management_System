@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/style2.css">
+    <link rel="stylesheet" href="../../static/orders.css">
+    <title>Add Trucks</title>
+</head>
+
+
+
+<body style="border-width:4px; border-style:double; border-color:#AA6C39; padding: 1em; height: 650px;">
+
+<div class="one">
+    <div class="content">
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="left">
+                <div class="icon icon-fill" align="center" onclick="window.location.href='assets'"><i class="fa fa-arrow-left"></i></div>
+                <div class="icon icon-enter" align="center" onclick="window.location.href='mainmanager'"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div>
+    <table>
+        <tr>
+            <th>Truck ID</th>
+            <th>Truck Capacity</th>
+            <th>Used Hours</th>
+            <th>Store</th>
+        </tr>
+        {% for row in trucks %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td><form id = 'delete' action ="" method = "post">
+                    <input type="hidden"  name="identifier" value="{{row[0]}}">
+                    <input name = "DELETE" type="submit" class="btn btn-primary" value="DELETE">
+                </form></td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <form id = 'truck' action ="" method = "post">
+                <td><input type="text" name="truckid" placeholder="Enter Truck ID" class="textbox" id="truckcid" hidden></td>
+                <td><input type="text" name="truckcapacity" placeholder="Enter Truck Capacity" class="textbox" id="truckcapacity" required></td>
+                <td><input type="text" name="usedhours" placeholder="Enter Used Hours" class="textbox" id= "usedhours" required></td>
+                <td><input type="text" name="store" placeholder="Enter the Store" class="textbox" id= "store" required></td>
+                <td>  <input type="submit" class="btn btn-primary" value="Enter Truck"></td>
+
+            </form>
+        </tr>
+    </table>
+</body>
+</html>

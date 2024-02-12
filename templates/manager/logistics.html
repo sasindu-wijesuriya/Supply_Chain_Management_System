@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/orders.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/style2.css">
+
+    <title>Logistics</title>
+</head>
+
+<body style="border-width:4px; border-style:double; border-color:#AA6C39; padding: 1em; height: 650px;">
+
+<div class="one">
+    <div class="content">
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="left">
+                <div class="icon icon-enter" align="center" onclick="window.location.href='storemanager'"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <table>
+        <caption><h3>Truck Schedule</h3></caption>
+        <tr>
+            <th>Session ID</th>
+            <th>Truck ID</th>
+            <th>Driver ID</th>
+            <th>Driver Assistant ID</th>
+            <th>Route ID</th>
+            <th>Departure Date</th>
+            <th>Departure Time</th>
+            <th>Arrival Date</th>
+            <th>Arrival Time</th>
+        </tr>
+        {% for row in schedules %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td>{{row[5]}}</td>
+                <td>{{row[6]}}</td>
+                <td>{{row[7]}}</td>
+                <td>{{row[8]}}</td>
+                <td><form id = 'delete' action ="" method = "post">
+                    <input type="hidden"  name="identifier" value="{{row[0]}}">
+                    <input name = "DELETE" type="submit" class="btn btn-primary" value="DELETE">
+                </form></td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <form id = 'truckassign' action ="" method = "post">
+                <td><input type="hidden" name="sessionid" placeholder="Enter Session ID" class="textbox" id="sessionid"></td>
+                <td><input list="truckid" name = 'truckid' placeholder="Select Truck"  class="textbox" id = "tr" required autocomplete="off">
+                    <datalist id = 'truckid'>
+                        {% for item in availabletruck %}
+                            <option value = '{{ item[0] }}'></option>
+                        {% endfor %}
+                    </datalist></td>
+                <td><input list="driverid" name = 'driverid' placeholder="Select Driver"  class="textbox" id = "dr" required autocomplete="off">
+                    <datalist id = 'driverid'>
+                        {% for item in availabledriver %}
+                            <option value = '{{ item[0] }}'></option>
+                        {% endfor %}
+                    </datalist></td>
+                <td><input list="driverassid" name = 'driverassid' placeholder="Select Driver Assistant"  class="textbox" id = "dra" required autocomplete="off">
+                    <datalist id = 'driverassid'>
+                        {% for item in availabledriverassistant %}
+                            <option value = '{{ item[0] }}'></option>
+                        {% endfor %}
+                    </datalist></td>
+
+                <td><input list="route" name = 'routeid' placeholder="Select Route"  class="textbox" id = "rt" required autocomplete="off">
+                    <datalist id = 'route'>
+                        {% for item in route_list %}
+                            <option value = '{{ item[0] }}'></option>
+                        {% endfor %}
+                    </datalist></td>
+
+                <td><input type="text" name="departuredate" placeholder="Departure Date" class="textbox" id="departuredate" required autocomplete="off"></td>
+
+                <td><input type="text" name="departuretime" placeholder="Departure Time" class="textbox" id="departuretime" required autocomplete="off"></td>
+                <td><input type="hidden" name="arrivaldate" placeholder="Arrival Date" class="textbox" id="arrivaldate"></td>
+                <td><input type="hidden" name="arrivaltime" placeholder="Arrival TIme" class="textbox" id="arrivaltime"></td>
+
+
+
+                <td>  <input type="submit" class="btn btn-primary" value="Enter Truck"></td>
+
+            </form>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>EcommersWebsite</title>
+    <link rel="stylesheet" href="https://cdn.reflowhq.com/v2/toolkit.min.css">
+
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="../static/assets/css/Black-Navbar.css">
+    <link rel="stylesheet" href="../static/assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="../static/assets/css/navbar-shoppingcart-ecommerce.css">
+    <link rel="stylesheet" href="../static/assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="../static/assets/css/Profile-Edit-Form-styles.css">
+    <link rel="stylesheet" href="../static/assets/css/Profile-Edit-Form.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button" style="background: rgb(34, 34, 34);border-radius: 20;border-top-left-radius: 20;border-top-right-radius: 20;border-bottom-right-radius: 20;border-bottom-left-radius: 20;border-style: none;padding-top: 0;padding-bottom: 10px;">
+        <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div><a class="navbar-brand" href="#"><span> Shopee Store </span> </a></div>
+            <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
+                <ul class="navbar-nav nav-right">
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('home')}}" style="color: rgba(224,217,217,0.9);">Home </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('productList')}}" style="color: rgba(224,217,217,0.9);">Product </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('Cart')}}" style="color: rgba(224,217,217,0.9);">Cart </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contactUs')}}" style="color: rgba(224,217,217,0.9);">Contact </a></li>
+                </ul>
+
+                {% if login %}
+
+                <p class="ms-auto navbar-text actions"><a class="login" href="{{ url_for('logout')}}" style="color: rgba(224,217,217,0.9);">Log out </a> <a class="btn btn-light action-button" role="button" href="{{ url_for('profile')}}" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Profile</a></p>
+
+
+                {% else  %}
+                <p class="ms-auto navbar-text actions"><a class="login" href="{{ url_for('login')}}" style="color: rgba(224,217,217,0.9);">Log In</a> <a class="btn btn-light action-button" role="button" href="{{ url_for('register')}}" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign Up</a></p>
+
+
+
+                {% endif %}
+
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div data-reflow-type="product-list" data-reflow-order="date_desc" style="margin : 50px">
+        <div class="reflow-product-list">
+            <div class="ref-products">
+                {% for row in products  %}
+
+
+                 <form action="{{ url_for('AddToCart')}}" method="POST" >
+                     <input id = "item_id" name = "item_id" value = {{ row[0] }} type="hidden">
+                <div class="ref-product" >
+                    <div class="ref-media"><img class="ref-image" src="{{url_for('static',filename= 'productImage/'+row[1]+'.png')}}" loading="lazy" /></div>
+                    <div class="ref-product-data" >
+                        <div class="ref-product-info">
+                            <h5 class="ref-name">{{ row[1] }}</h5>
+                            <p class="ref-excerpt">{{ row[4] }}</p>
+                        </div><strong class="ref-price" >LKR {{ row[3] }}</strong>
+                    </div>
+                    <div class="ref-addons" style="margin-top:25px" >
+                        <button class="ref-button preview-toggle" type="submit" name = 'submit' id = 'submit'>Add to Cart </button></div>
+
+                </div>
+
+
+                 </form>
+                {% endfor %}
+
+             </div>
+
+            <div class="ref-product-preview">
+                <div class="ref-product-preview-header">
+                    <div class="ref-title"></div>
+                    <div class="ref-close-button">×</div>
+                </div>
+                <div class="ref-product-preview-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/assets/js/bs-init.js"></script>
+    <script src="../static/assets/js/Profile-Edit-Form.js"></script>
+
+</body>
+
+</html>

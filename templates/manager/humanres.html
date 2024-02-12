@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/style2.css">
+    <link rel="stylesheet" href="../../static/orders.css">
+
+    <style>caption {
+        display: table-caption;
+        text-align: center;
+    }</style>
+    <title>Human Resources</title>
+</head>
+
+<body style="border-width:4px; border-style:double; border-color:#AA6C39; padding: 1em; height: 650px;">
+
+<div class="one">
+    <div class="content">
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="left">
+                <div class="icon icon-enter" align="center" onclick="window.location.href='storemanager'"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <table>
+        <caption><h3>Drivers</h3></caption>
+        <tr>
+            <th>Driver ID</th>
+            <th>Driver Name</th>
+            <th>NIC</th>
+            <th>ADDRESS LINE 1</th>
+            <th>ADDRESS LINE 2</th>
+        </tr>
+        {% for row in drivers %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td><form id = 'delete' action ="" method = "post">
+                    <input type="hidden"  name="identifier" value="{{row[0]}}">
+                    <input name = "DELETE" type="submit" class="btn btn-primary" value="DELETE">
+                </form></td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <form id = 'driver' action ="" method = "post">
+                <td><input type="hidden" name="driverid" placeholder="Enter Driver ID" class="textbox" id="di"></td>
+                <td><input type="text" name="drivername" placeholder="Enter Driver name" class="textbox" id="dn" required></td>
+                <td><input type="text" name="nic" placeholder="Enter NIC" class="textbox" id= "nic" required></td>
+                <td><input type="text" name="addressline1" placeholder="Enter ADDRESS LINE 1" class="textbox" id= "add1" required></td>
+                <td><input type="text" name="addressline2" placeholder="Enter ADDRESS LINE 2" class="textbox" id= "addressline2" required></td>
+                <td>  <input type="submit" class="btn btn-primary" value="Enter Driver"></td>
+
+            </form>
+        </tr>
+    </table>
+
+
+    <table>
+        <caption><h3>Driver Assistants</h3></caption>
+        <tr>
+            <th>Driver Assistant ID</th>
+            <th>Driver Assistant Name</th>
+            <th>NIC</th>
+            <th>ADDRESS LINE 1</th>
+            <th>ADDRESS LINE 2</th>
+        </tr>
+        {% for row in driverassistant %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td><form id = 'delete2' action ="" method = "post">
+                    <input type="hidden"  name="identifier" value="{{row[0]}}">
+                    <input name = "DELETE2" type="submit" class="btn btn-primary" value="DELETE">
+                </form></td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <form id = 'driverassistant' action ="" method = "post">
+                <td><input type="hidden" name="driverassistantid" placeholder="Enter Driver Assistant ID" class="textbox" id="dadid" required></td>
+                <td><input type="text" name="driverassistantname" placeholder="Enter Driver Assistant name" class="textbox" id="dadn" required></td>
+                <td><input type="text" name="danic" placeholder="Enter NIC" class="textbox" id= "danic" required></td>
+                <td><input type="text" name="daaddressline1" placeholder="Enter ADDRESS LINE 1" class="textbox" id= "daadd1" required></td>
+                <td><input type="text" name="daaddressline2" placeholder="Enter ADDRESS LINE 2" class="textbox" id= "daaddressline2" required></td>
+                <td>  <input type="submit" class="btn btn-primary" value="Enter Driver"></td>
+
+            </form>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

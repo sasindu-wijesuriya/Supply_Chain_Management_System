@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<link rel="stylesheet" href="../../static/orders.css">
+
+<body>
+<table style="width:100%">
+    <tr>
+        <th>ORDER ID</th>
+        <th>CUSTOMER ID</th>
+        <th>No. of ITEMS</th>
+        <th>ORDER DATE</th>
+        <th>ORDER TIME</th>
+        <th>TOTAL</th>
+        <th>STATUS</th>
+    </tr>
+    {% for row in ordersview %}
+        <tr>
+            <form action ="" method = "post">
+
+                <input type="hidden" id="orderid" name="orderid" placeholder={{row[0]}} value="{{row[0]}}">
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td>{{row[5]}}</td>
+                <td>{{row[6]}}</td>
+                {% if  'InTrain' in row %}
+
+                    <td>{{row[-1]}}</td>
+                {% else %}
+                    <td><input list="train_list" name = 'trainschedule' placeholder="Assign a Train "  class="textbox" id = "train" required>
+                        <datalist id = 'train_list'>
+                            {% for item in traindropdown %}
+                                <option value = '{{ item[0] }} {{ item[1]}}'></option>
+                            {% endfor %}
+                        </datalist>
+                        </br></br>
+                    </td>
+                {% endif %}
+                <td><input type="submit" class="btn btn-primary" value="Save"></td>
+            </form>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

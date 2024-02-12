@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/style2.css">
+    <link rel="stylesheet" href="../../static/orders.css">
+
+</head>
+
+<body style="border-width:4px; border-style:double; border-color:#AA6C39; padding: 1em; height: 650px;">
+
+<div class="one">
+    <div class="content">
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="left">
+                <div class="icon icon-enter" align="center" onclick="window.location.href='mainmanager'"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <table style="width:96%">
+        <tr>
+            <th>ORDER ID</th>
+            <th>CUSTOMER ID</th>
+            <th>No. of ITEMS</th>
+            <th>ORDER DATE</th>
+            <th>Route ID</th>
+            <th>TOTAL</th>
+            <th>STATUS</th>
+        </tr>
+        {% for row in ordersview %}
+            <tr>
+                <form action="" method="post">
+
+                    <input type="hidden" id="orderid" name="orderid" placeholder={{ row[0] }} value="{{ row[0] }}">
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[7] }}</td>
+                    <td>{{ row[5] }}</td>
+                    {% if  (row[8] == 'InTrain') or (row[8] == 'InTruck') %}
+
+                        <td>{{ row[-1] }}</td>
+                        <td><input type="submit" class="btn btn-primary" value="Save" disabled></td>
+
+                    {% else %}
+
+                        <td><input list="train_list" name='trainschedule' placeholder="Assign a Train " class="textbox"
+                                   id="train" required autocomplete="off">
+                            <datalist id='train_list'>
+                                {% for item in traindropdown %}
+                                    <option value='{{ item[0] }} {{ item[1] }} '></option>
+                                {% endfor %}
+                            </datalist>
+                            </br></br>
+                        </td>
+                        <td><input type="submit" class="btn btn-primary" value="Save"></td>
+
+                    {% endif %}
+                    {#    <td><input type="submit" class="btn btn-primary" value="Save"></td>#}
+                </form>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

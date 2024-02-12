@@ -1,0 +1,244 @@
+/*HOME BUTTONS*/
+
+.container {
+    display: table;
+    height: 65px;
+    width: 100%;
+    padding-bottom: 10px;
+    margin: auto auto;
+    background: #2d2c3e;
+    z-index: -1;
+}
+
+.content {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.icon-container {
+    margin-top: 8px;
+    width: 100%;
+    height: 55px;
+}
+
+.icon {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 53px;
+    height: 53px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.icon::before, .icon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: all 0.25s ease;
+    border-radius: 30px;
+}
+
+.icon i {
+    position: relative;
+    color: #FFFFFF;
+    font-size: 25px;
+    margin-top: 13px;
+    transition: all 0.25s ease;
+}
+
+.icon-fill::before {
+    transition-duration: 0.5s;
+    box-shadow: inset 0 0 0 1px #16A085;
+
+}
+
+.icon-fill:hover::before {
+    box-shadow: inset 0 0 0 60px #16A085;
+}
+
+.icon-enter::after {
+    box-shadow: inset 0 0 0 1px #EB9532;
+}
+
+.icon-enter::before {
+    border-radius: 0;
+    margin-left: -100%;
+    box-shadow: inset 0 0 0 60px #EB9532;
+}
+
+.icon-enter:hover::before {
+    margin-left: 0;
+}
+
+.icon-expand::after {
+    box-shadow: inset 0 0 0 1px #C82647;
+}
+
+.icon-expand::before {
+    background: #C82647;
+    box-shadow: inset 0 0 0 60px #2d2c3e;
+}
+
+.icon-expand:hover::before {
+    box-shadow: inset 0 0 0 1px #2d2c3e;
+}
+
+.icon-collapse::before {
+    border-radius: 0;
+}
+
+.icon-collapse:hover::before {
+    box-shadow: inset 0 30px 0 0 #8CC63F, inset 0 -30px 0 0 #8CC63F;
+}
+
+.icon-collapse::after {
+    box-shadow: inset 0 0 0 1px #8CC63F;
+}
+
+.icon-rotate {
+    box-shadow: inset 0 0 0 1px #7E3661;
+}
+
+.icon-rotate::after, .icon-rotate::before {
+    border: 0px solid transparent;
+}
+
+.icon-rotate:hover::before {
+    transition: border-top-width 0.3s ease, border-top-color 0.3s ease;
+    border-width: 60px;
+    border-top-color: #7E3661;
+}
+
+.icon-rotate:hover::after {
+    transition: border-left-width 0.3s ease, border-left-color 0.3s ease;
+    border-width: 60px;
+    border-left-color: #7E3661;
+}
+
+.icon-rotate:hover {
+    transition: background 0.001s ease 0.3s;
+    background: #7E3661;
+}
+
+.icon-rotate i {
+    z-index: 1;
+}
+
+
+/*GLOW ON HOVER BUTTON*/
+.glow-on-hover {
+	font-size: 20px;
+    width: 320px;
+    height: 65px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #1f2f47;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+	margin: 30px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #1f2f47
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #1f2f47;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+
+
+
+
+
+
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.65);
+    opacity: 1;
+    font-style: oblique;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.one .content {
+    width: 100%;
+    margin-left: 0px;
+}
+
+.one .content .topbar {
+    text-align: center;
+    padding: 20px;
+    background: #6497B1;
+    color: white;
+}
+
+.one {
+    display: flex;
+    position: relative;
+}
+
+.one .content .contentbar {
+    margin: auto;
+}
+
+.one .content .contentbar h1 {
+    color: #11a844;
+    text-align: center;
+    font-style: oblique;
+    font-weight: bold;
+}
+
+.textbox {
+    width: 120px;
+}

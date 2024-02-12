@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>profile</title>
+<link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/assets/css/Profile-Edit-Form-styles.css">
+<link rel="stylesheet" href="/static/assets/css/Profile-Edit-Form.css">
+
+    <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="/static/assets/css/Black-Navbar.css">
+    <link rel="stylesheet" href="/static/assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="/static/assets/css/navbar-shoppingcart-ecommerce.css">
+    <link rel="stylesheet" href="/static/assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="/static/assets/css/Profile-Edit-Form-styles.css">
+    <link rel="stylesheet" href="/static/assets/css/Profile-Edit-Form.css">
+
+</head>
+<body>
+ <nav class="navbar navbar-light navbar-expand-md navbar-fixed-top navigation-clean-button" style="background: rgb(34, 34, 34);border-radius: 20;border-top-left-radius: 20;border-top-right-radius: 20;border-bottom-right-radius: 20;border-bottom-left-radius: 20;border-style: none;padding-top: 0;padding-bottom: 10px;">
+        <div class="container"><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div><a class="navbar-brand" href="#"><span> Shopee Store </span> </a></div>
+            <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
+                <ul class="navbar-nav nav-right">
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('home')}}" style="color: rgba(224,217,217,0.9);">Home </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('productList')}}" style="color: rgba(224,217,217,0.9);">Product </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('Cart')}}" style="color: rgba(224,217,217,0.9);">Cart </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('contactUs')}}" style="color: rgba(224,217,217,0.9);">Contact </a></li>
+                </ul>
+
+                {% if login %}
+
+                <p class="ms-auto navbar-text actions"><a class="login" href="{{ url_for('logout')}}" style="color: rgba(224,217,217,0.9);">Log out </a> <a class="btn btn-light action-button" role="button" href="{{ url_for('profile')}}" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Profile</a></p>
+
+
+                {% else  %}
+                <p class="ms-auto navbar-text actions"><a class="login" href="{{ url_for('login')}}" style="color: rgba(224,217,217,0.9);">Log In</a> <a class="btn btn-light action-button" role="button" href="{{ url_for('register')}}" style="color: rgba(0,0,0,0.9);background: var(--bs-gray-200);border-radius: 10px;border-style: solid;border-color: rgba(0,0,0,0.9);font-size: 16px;padding: 5px 8px;">Sign Up</a></p>
+
+
+
+                {% endif %}
+
+            </div>
+        </div>
+    </nav>
+
+
+
+<div id="profile" class="container profile profile-view">
+
+
+    <form action="{{ url_for('profile')}}" method="POST" >
+        <div class="row profile-row">
+
+            <div class="col-md-8">
+                <h1>Profile </h1>
+                <hr />
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Name </label><input class="form-control" type="text" required name="name" id="name" value = {{ userDetail[1] }} /></div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Address number </label><input class="form-control" type="text" required name="address_number" id="address_number"  value = {{ userDetail[2] }} /></div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Address line 1 </label><input class="form-control" type="text" required name="address_line_1" id="address_line_1" value = {{ userDetail[3] }} /></div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Address line 2 </label><input class="form-control" type="text" required name="address_line_2" id ="address_line_2" value = {{ userDetail[4] }} /></div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Contact number </label><input class="form-control" type="text" required name="contact_number" id ="contact_number" value = {{ userDetail[5] }} /></div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Customer type </label>
+
+                                <select class="form-control" name="customer_type" id = "customer_type" required>
+                                    {% if userDetail[6] == "end" %}
+                                    <option value="end"  selected >end customer</option>
+                                    {% else %}
+                                    <option value="end" >end customer</option>
+                                    {% endif %}
+
+                                    {% if userDetail[6] == "ret" %}
+                                    <option value="ret"  selected >retailer</option>
+                                    {% else %}
+                                    <option value="ret" >retailer</option>
+                                    {% endif %}
+
+                                    {% if userDetail[6] == "whole" %}
+                                    <option value="whole"  selected >wholesaler</option>
+                                    {% else %}
+                                    <option value="whole" >wholesaler</option>
+                                    {% endif %}
+                                </select>
+
+                    </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="form-group mb-3"><label class="form-label">Email Address </label><input class="form-control" type="text" required name="customer_type" id="userName" value = {{ userDetail[7] }} disabled /></div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12 content-right">
+                        <button class="btn btn-primary form-btn" type="submit"  id = 'submit'>SAVE </button>
+                        <a href ="{{url_for('home')}}"><button class="btn btn-danger form-btn" type="reset" >RESET </button></a>
+                    </div>
+                </div>
+
+                {{ msg }}
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/assets/js/bs-init.js"></script>
+<script src="../static/assets/js/Profile-Edit-Form.js"></script>
+</body>
+</html>

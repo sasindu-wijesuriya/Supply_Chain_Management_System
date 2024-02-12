@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Assets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/style2.css">
+    <link rel="stylesheet" href="../../static/orders.css">
+
+    <style>
+        .button {
+            display: block;
+            width: 215px;
+            height: 50px;
+            background: #e7e7e7;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            color: black;
+            font-weight: bold;
+            line-height: 45px;
+        }
+    </style>
+</head>
+<body style="border-width:4px; border-style:double; border-color:#AA6C39; padding: 1em; height: 650px;">
+
+<div class="one">
+    <div class="content">
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="left">
+                <div class="icon icon-enter" align="center" onclick="window.location.href='mainmanager'"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    {#    <center><a class = "button" href="{{ url_for('addproducts')}}">ADD or REMOVE Products</a><br><br></center>#}
+    {#    <center><a class = "button" href="{{ url_for('addtrucks')}}">ADD or REMOVE Trucks</a><br><br></center>#}
+    <center><button class="glow-on-hover" type="button" style="margin-top: 100px;" onclick="window.location.href='addproducts'">ADD or REMOVE Products</button><br>
+        <button class="glow-on-hover" type="button" style="margin-top: 100px" onclick="window.location.href='addtrucks'">ADD or REMOVE Trucks</button><br></center>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule a Train</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/style2.css">
+    <link rel="stylesheet" href="../../static/orders.css">
+</head>
+
+<body style="border-width:4px; border-style:double; border-color:#AA6C39; padding: 1em; height: 650px;">
+
+<div class="one">
+    <div class="content">
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="left">
+                <div class="icon icon-enter" align="center" onclick="window.location.href='mainmanager'"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th>Session ID</th>
+            <th>Train ID</th>
+            <th>Departure Time</th>
+            <th>Departure Date</th>
+            <th>Available capacity</th>
+            <th>Arrival Station</th>
+        </tr>
+        {% for row in trains_in_schedule %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+                <td>{{row[5]}}</td>
+
+            </tr>
+        {% endfor %}
+        <tr>
+            <form action ="" method = "post">
+                <td>ENTER NEW TRAIN SESSION</td>
+                <td><input type="text" name="trainid" placeholder="Enter Train ID" class="textbox" id="trainid" required></td>
+                <td><input type="text" name="departuretime" placeholder="Enter departure Time" class="textbox" id="departuretime" required></td>
+                <td><input type="text" name="departuredate" placeholder="Enter departure Date" class="textbox" id="departure Date" required></td>
+                <td><input type="text" name="availablecapacity" placeholder="Enter Available Capacity" class="textbox" id="available capacity" required></td>
+                <td><input type="text" name="arrivalstation" placeholder="Enter Arrival Station" class="textbox" id="arrival station" required></td>
+                <td>  <input type="submit" class="btn btn-primary" value="Enter Session"></td>
+
+            </form>
+        </tr>
+    </table>
+</body>
+</html>

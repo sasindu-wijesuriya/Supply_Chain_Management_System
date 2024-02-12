@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Customer-Order Report</title>
+    <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="../static/assets/css/Black-Navbar.css">
+    <link rel="stylesheet" href="../static/assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="../static/assets/css/navbar-shoppingcart-ecommerce.css">
+    <link rel="stylesheet" href="../static/assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="../static/assets/css/Profile-Edit-Form-styles.css">
+    <link rel="stylesheet" href="../static/assets/css/Profile-Edit-Form.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/style2.css">
+</head>
+
+
+<style>
+    td {
+        text-align: left;
+        border: none;
+        padding: 5px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 400px;
+        text-align: left;
+        border: 3px solid black;
+        padding: 2px;
+        background-color: #fdfdfe;
+    }
+</style>
+
+
+<body bgcolor="#f1e5d0" style="border-width:4px; border-style:double; border-color:#AA6C39; padding: 1em; height: 100%; margin: 7px">
+
+<div class="one">
+    <div class="content">
+        {#Navigation Panel#}
+        <div class="container">
+            <div class="icon-container" align="left">
+                <div class="icon icon-fill" align="center" onclick="window.location.href='mmdashboard'"><i class="fa fa-arrow-left"></i></div>
+                <div class="icon icon-enter" align="center" onclick="window.location.href='mainmanager'"><i class="fa fa-bars"></i></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row register-form">
+    <div class="col-md-8 offset-md-2">
+        <form class="custom-form" action="{{ url_for('GenerateCustomerReport')}}" method="post" autocomplete="off" >
+            <h1>Customer - Order Report</h1>
+            <div class="row form-group">
+                <div class="col-sm-4 label-column"><label class="col-form-label"  >Enter the customer ID</label></div>
+                <div class="col-sm-6 input-column"><input class="form-control" type="text" name="required_customer_id" id="required_customer_id" required></div>
+            </div>
+            <button class="btn btn-light submit-button" type="submit" >Generate Customer - Order Report</button>
+        </form>
+    </div>
+</div>
+
+<div align="center">
+    Customer - Order Report
+    <br><br>
+    <table>
+        <tbody>
+        <tr>
+            <td><font style="">Customer ID </font></td>
+            <td><font>{{ customer_report_data[0] }}</font></td>
+        </tr>
+        <tr>
+            <td><font style="">Customer Name </font></td>
+            <td><font>{{ customer_report_data[1] }}</font></td>
+        </tr>
+        <tr>
+            <td><font style="">Customer Email </font></td>
+            <td><font>{{ customer_report_data[2] }}</font></td>
+        </tr>
+        <tr>
+            <td><font style="">Customer Type </font></td>
+            <td><font>{{ customer_report_data[3] }}</font></td>
+        </tr>
+        <tr>
+            <td><font style="">Number of Orders placed</font></td>
+            <td><font>{{ customer_report_data[4] }}</font></td>
+        </tr>
+        <tr>
+            <td><font style="">Number of Items bought</font></td>
+            <td><font>{{ customer_report_data[5] }}</font></td>
+        </tr>
+        <tr>
+            <td><font style="">Total Revenue (LKR)</font></td>
+            <td><font>{{ customer_report_data[6] }}</font></td>
+        </tr>
+        <tr>
+            <td><font style="">Total Discount Given (LKR)</font></td>
+            <td><font>{{ customer_report_data[7] }}</font></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/assets/js/bs-init.js"></script>
+<script src="../static/assets/js/Profile-Edit-Form.js"></script>
+</body>
+
+</html>
